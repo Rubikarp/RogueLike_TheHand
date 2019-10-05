@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &599484084826347968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6516325368849974954}
+  - component: {fileID: 3732810496141450685}
+  m_Layer: 0
+  m_Name: "d\xE9corationSolEtagere"
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6516325368849974954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599484084826347968}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3732810496141450685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599484084826347968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69077a326085b35409cabdec7eb19868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 1730350896903344382, guid: 5b5091838cfefe04b81b8d8c32890aa3, type: 3}
+  - {fileID: 342891166430794500, guid: f910fe9e24d8dd14cb389414d8da272e, type: 3}
+  - {fileID: 8803066127637561550, guid: 4a651a1bbedafe54e9c81ea478c3643b, type: 3}
+  - {fileID: 2424870205757603178, guid: 1e5c992e22b99834ea723d7076e18ad4, type: 3}
+  - {fileID: 8803066127637561550, guid: 4a651a1bbedafe54e9c81ea478c3643b, type: 3}
+  - {fileID: 342891166430794500, guid: f910fe9e24d8dd14cb389414d8da272e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  me: {fileID: 6516325368849974954}
