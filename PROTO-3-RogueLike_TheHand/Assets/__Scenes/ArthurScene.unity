@@ -190,9 +190,11 @@ GameObject:
   - component: {fileID: 406754451}
   - component: {fileID: 406754455}
   - component: {fileID: 406754454}
+  - component: {fileID: 406754457}
   - component: {fileID: 406754453}
   - component: {fileID: 406754452}
   - component: {fileID: 406754456}
+  - component: {fileID: 406754458}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -326,6 +328,76 @@ MonoBehaviour:
   jumpTime: 0
   isOnGround: 0
   posDetectGround: {fileID: 1841927308}
+--- !u!114 &406754457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406754450}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8295314ee14b5cf4188778cd37b91712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 406754454}
+  animator: {fileID: 433644985}
+  inputStickDirectionX: 0
+  inputStickDirectionY: 0
+  inputStickDirectionXRaw: 0
+  inputStickDirectionYRaw: 0
+  inputJump: 0
+  inputDash: 0
+  inputAttackLight: 0
+  inputAttackHeavy: 0
+  isOnGround: 0
+  isOnWall: 0
+  canMove: 0
+  canJump: 0
+  canDash: 0
+  isDashing: 0
+  isWallGrabing: 0
+  isWallJumping: 0
+  isWallSliding: 0
+  comboCount: 0
+  runSpeed: 10
+  runAirControl: 0.6
+  runGroundControl: 1
+  jumpForce: 100
+  jumpTimer: 0.3
+  jumpTime: 0
+  slideSpeed: 5
+  wallJumpLerp: 10
+  dashSpeed: 20
+  dashForce: 5
+  hasDash: 0
+  dust: {fileID: 1037789734}
+  isEnvironnement:
+    serializedVersion: 2
+    m_Bits: 256
+  posDetectGround: {fileID: 1841927308}
+--- !u!114 &406754458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406754450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca41c19205e20d458107921015ce0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 406754454}
+  speed: 5
+  airControl: 0.5
+  groundControl: 1
+  dashPower: 12
+  dashTime: 0.1
+  isDashing: 0
+  dashInputTimer: 2
+  dashInputTime: 0
+  moveInput: 0
 --- !u!1 &433644982
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +410,7 @@ GameObject:
   - component: {fileID: 433644984}
   - component: {fileID: 433644985}
   m_Layer: 0
-  m_Name: perso immobile
+  m_Name: characterSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,7 +509,7 @@ GameObject:
   - component: {fileID: 1037789734}
   - component: {fileID: 1037789733}
   m_Layer: 0
-  m_Name: DustParticuleEffect
+  m_Name: FX Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +600,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1037789731}
   serializedVersion: 6
   lengthInSec: 5
-  simulationSpeed: 0.5
+  simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -602,7 +674,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -655,7 +727,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -709,7 +781,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.4930435, g: 0.5608696, b: 0.6, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -771,7 +843,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.5
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1093,7 +1165,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 6
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1146,15 +1218,15 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 5
-    angle: 25
+    type: 4
+    angle: 70
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 22, y: 1, z: 1}
+    m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1222,7 +1294,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 828cdaa74b862da42ac694465a92deef, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -1233,7 +1305,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 3
       mode: 0
       spread: 0
       speed:
@@ -1290,7 +1362,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 180
       mode: 0
       spread: 0
       speed:
@@ -1352,7 +1424,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1405,7 +1477,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1458,11 +1530,11 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 1
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1470,20 +1542,29 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 0.07014352
+          outSlope: 0.07014352
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.21063927
+        - serializedVersion: 3
+          time: 0.6977524
+          value: 0.5101577
+          inSlope: 0.3054189
+          outSlope: 0.3054189
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.50904846
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
+          value: 0
+          inSlope: -0.05074212
+          outSlope: -0.05074212
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.40634006
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1782,7 +1863,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1790,8 +1871,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.57521737, g: 0.6543478, b: 0.7, a: 1}
-        key1: {r: 0.4664762, g: 0.55799997, b: 0.62, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1973,15 +2054,15 @@ ParticleSystem:
     enabled: 1
     x:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: -80
+      minMaxState: 2
+      scalar: 15
       minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2005,7 +2086,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: -1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2026,15 +2107,15 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 70
+      minMaxState: 2
+      scalar: 30
       minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2058,7 +2139,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
+          value: 0.8453598
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2079,8 +2160,8 @@ ParticleSystem:
         m_RotationOrder: 4
     z:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 2
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2554,7 +2635,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 1
+    inWorldSpace: 0
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
@@ -2612,7 +2693,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -2669,7 +2750,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2772,7 +2853,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 1
+    inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
     enabled: 0
@@ -5134,7 +5215,7 @@ GameObject:
   - component: {fileID: 1137982479}
   - component: {fileID: 1137982480}
   m_Layer: 0
-  m_Name: FX Source
+  m_Name: FX Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5414,7 +5495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1512734294
 Transform:
   m_ObjectHideFlags: 0
@@ -5596,6 +5677,16 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: e9a06fc1b8c3be34abd64b07475f6ab3, type: 2}
+    - target: {fileID: 7598232967206431198, guid: bac6b85b6bd695d49b6e31ebb5436af9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413287853331380858, guid: bac6b85b6bd695d49b6e31ebb5436af9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bac6b85b6bd695d49b6e31ebb5436af9, type: 3}
 --- !u!4 &1587311505 stripped
@@ -5732,7 +5823,8 @@ MonoBehaviour:
   target: {fileID: 433644983}
   mySelf: {fileID: 1881510549}
   speed: 100
-  detectingDistance: 300
+  detectingDistance: 500
+  tropProche: 50
 --- !u!61 &1881510552
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5771,7 +5863,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1000
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 32

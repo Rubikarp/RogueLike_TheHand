@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Script\character\Input Manager.cs" />
     <Compile Include="Assets\_Script\Ennemis\ennemisRush.cs" />
     <Compile Include="Assets\_Script\Ennemis\ennemisTakingDommage.cs" />
     <Compile Include="Assets\_Script\Vieux\Attack\AttackLiving.cs" />
@@ -74,7 +73,6 @@
     <Compile Include="Assets\_Script\Vieux\PlayerMouvement\PlayerJumpGround.cs" />
     <Compile Include="Assets\_Script\Vieux\PlayerMouvement\PlayerJumpWall.cs" />
     <Compile Include="Assets\_Script\Vieux\PlayerMouvement\PlayerMouvDash.cs" />
-    <Compile Include="Assets\_Script\Vieux\PlayerMouvement\PlayerMouvement.cs" />
     <Compile Include="Assets\_Script\Vieux\PlayerMouvement\PlayerMouvRun.cs" />
     <Compile Include="Assets\_Script\Vieux\randomDecor.cs" />
     <Reference Include="Cinemachine">
